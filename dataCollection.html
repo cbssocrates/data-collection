@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<!-- Author: C B S Socrates (cbss.socrates@gmail.com) -->
+<!-- Date  : 27 March, 2023                           -->
+<html>
+  <head>
+    <title>My experiment</title>
+    <meta charset="utf-8"/>
+    <script src="jatos.js"></script>
+    <script src="https://unpkg.com/jspsych@7.3.1"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@1.1.2"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-initialize-microphone@1.0.2"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-html-audio-response@1.0.2"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-survey-multi-choice@1.1.2"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-survey-text@1.1.2"></script>
+    <link href="https://unpkg.com/jspsych@7.3.1/css/jspsych.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body></body>
+  <script>
+  
+    //Fisher-Yates Shuffle
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+     }
+    }
+
+    var retroflexwords = {
+      "Malayalam": ['ആട്ടാ', 'ഇട്ടി', 'ഉട്ടു', 'എട്ടെ', 'ഒട്ടൊ'],
+      "Kannada": ['ಆಟ್ಟಾ', 'ಇಟ್ಟಿ', 'ಉಟ್ಟು', 'ಎಟ್ಟೆ', 'ಒಟ್ಟೊ'],
+      "Hindi": ['आट्टा','इट्टि','उट्टु','एट्टे','ओट्टो'],
+      "Marathi": ['आट्टा','इट्टि','उट्टु','एट्टे','ओट्टो'],
+      "Tamil": ['ஆட்டா','இட்டி','உட்டு','எட்டெ','ஒட்டொ'],
+      "Bengali": ['আট্টা','ইট্টি','উট্টু','এট্টে','ওট্টো']
+    };
+    
+    var dentalwords = {
+      "Malayalam": ['ആത്താ', 'ഇത്തി', 'ഉത്തു', 'എത്തെ', 'ഒത്തൊ'],
+      "Kannada": ['ಆತ್ತಾ', 'ಇತ್ತಿ', 'ಉತ್ತು', 'ಎತ್ತೆ', 'ಒತ್ತೊ'],
+      "Hindi": ['आत्ता','इत्ति','उत्तु','एत्ते','ओत्तो'],
+      "Marathi": ['आत्ता','इत्ति','उत्तु','एत्ते','ओत्तो'],
+      "Tamil": ['ஆத்தா','இத்தி','உத்து','எத்தெ','ஒத்தொ'],
+      "Bengali": ['আত্তা','ইত্তি','উত্তু','এত্তে','ওত্তে']
+    };
+    
+    var labialwords = {
+      "Malayalam": ['ആപ്പാ', 'ഇപ്പി', 'ഉപ്പു', 'എപ്പെ', 'ഒപ്പൊ'],
+      "Kannada": ['ಆಪ್ಪಾ', 'ಇಪ್ಪಿ', 'ಉಪ್ಪು', 'ಎಪ್ಪೆ', 'ಒಪ್ಪೊ'],
+      "Hindi": ['आप्पा', 'इप्पि', 'उप्पु', 'एप्पे', 'ओप्पो'],
+      "Marathi": ['आप्पा', 'इप्पि', 'उप्पु', 'एप्पे', 'ओप्पो'],
+      "Tamil": ['ஆப்பா', 'இப்பி', 'உப்பு', 'எப்பெ', 'ஒப்பொ'],
+      "Bengali": ['আপ্পা', 'ইপ্পি', 'উপ্পু', 'এপ্পে', 'ওপ্পো']
+    };
+    
+    var dictionary = {
+      "Malayalam": [].concat(retroflexwords["Malayalam"], labialwords["Malayalam"], dentalwords["Malayalam"],
+                             retroflexwords["Malayalam"], labialwords["Malayalam"], dentalwords["Malayalam"],
+                             retroflexwords["Malayalam"], labialwords["Malayalam"], dentalwords["Malayalam"],
+                             retroflexwords["Malayalam"], labialwords["Malayalam"], dentalwords["Malayalam"]),
+      "Kannada":   [].concat(retroflexwords["Kannada"], labialwords["Kannada"], dentalwords["Kannada"],
+                             retroflexwords["Kannada"], labialwords["Kannada"], dentalwords["Kannada"],
+                             retroflexwords["Kannada"], labialwords["Kannada"], dentalwords["Kannada"],
+                             retroflexwords["Kannada"], labialwords["Kannada"], dentalwords["Kannada"]),
+      "Hindi":     [].concat(retroflexwords["Hindi"], labialwords["Hindi"], dentalwords["Hindi"],
+                             retroflexwords["Hindi"], labialwords["Hindi"], dentalwords["Hindi"],
+                             retroflexwords["Hindi"], labialwords["Hindi"], dentalwords["Hindi"],
+                             retroflexwords["Hindi"], labialwords["Hindi"], dentalwords["Hindi"]),
+      "Marathi":   [].concat(retroflexwords["Marathi"], labialwords["Marathi"], dentalwords["Marathi"],
+                             retroflexwords["Marathi"], labialwords["Marathi"], dentalwords["Marathi"],
+                             retroflexwords["Marathi"], labialwords["Marathi"], dentalwords["Marathi"],
+                             retroflexwords["Marathi"], labialwords["Marathi"], dentalwords["Marathi"]),
+      "Tamil":     [].concat(retroflexwords["Tamil"], labialwords["Tamil"], dentalwords["Tamil"],
+                             retroflexwords["Tamil"], labialwords["Tamil"], dentalwords["Tamil"],
+                             retroflexwords["Tamil"], labialwords["Tamil"], dentalwords["Tamil"],
+                             retroflexwords["Tamil"], labialwords["Tamil"], dentalwords["Tamil"]),
+      "Bengali":   [].concat(retroflexwords["Bengali"], labialwords["Bengali"], dentalwords["Bengali"],
+                             retroflexwords["Bengali"], labialwords["Bengali"], dentalwords["Bengali"],
+                             retroflexwords["Bengali"], labialwords["Bengali"], dentalwords["Bengali"],
+                             retroflexwords["Bengali"], labialwords["Bengali"], dentalwords["Bengali"]),
+    };
+    
+    shuffle(dictionary["Malayalam"]);
+    shuffle(dictionary["Kannada"]);
+    shuffle(dictionary["Hindi"]);
+    shuffle(dictionary["Marathi"]);
+    shuffle(dictionary["Tamil"]);
+    shuffle(dictionary["Bengali"]);
+
+    var iterations = 0;
+    var language_selected = "";
+
+    var jsPsych = initJsPsych({ 
+        on_finish: () => jatos.endStudy(jsPsych.data.get().json())
+    });
+    
+    
+    var intro = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: `<p style="font-size:48px; color:red;">Data Collection, SLL, JU</p>Use a DESKTOP/LAPTOP<br/>(Press the <em>spacebar</em> to continue)`
+    };
+
+    
+    var select_language = {
+      type: jsPsychSurveyMultiChoice,
+      questions: [
+        {
+          prompt: "<h4>Welcome to this speech experiment. Please select the language  that you consider to be your first language or mother tongue.</h4>", 
+          name: 'language', 
+          options: ['Malayalam', 'Tamil', 'Marathi', 'Kannada', 'Bengali', 'Hindi'], 
+          required: true
+        }]
+    };
+    
+    
+    var instructions = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: () => {
+      
+      
+        //language selected beiing stored for future use.==============================================================
+        language_selected = jsPsych.data.get().last(1).values()[0].response.language;
+        //=============================================================================================================
+    //================================================================================================================
+    //Instructions to be shown is being chosen========================================================================    
+        
+        switch(language_selected) {
+          case "Malayalam":
+            return "<h2>നിർദ്ദേശങ്ങൾ</h2><h4>ദയവായി ഇനിപ്പറയുന്ന നിർദ്ദേശങ്ങൾ പാലിക്കുക:</h4></br>".concat(
+                   "(i) സാധ്യമെങ്കിൽ ഒരു ബാഹ്യ മൈക്രോഫോൺ ഉപയോഗിക്കുക.</br>",
+                   "(ii) ഓരോ സ്ലൈഡിലും നിങ്ങൾക്ക് അക്ഷരങ്ങളുടെ ഒരു പരമ്പര കാണാo.</br>",
+                   "(iii) നിങ്ങളുടെ ആദ്യ ഭാഷയിൽ/മാതൃഭാഷയിൽ പറയുന്നതുപോലെ ഈ ഓരോ സീക്വൻസുകളും 5 സെക്കൻഡിനുള്ളിൽ ഉച്ചരിക്കുക.</br>",
+                   "(iv) നിങ്ങൾ 5 സെക്കൻഡിനുള്ളിൽ സീക്വൻസുകൾ ഉച്ചരിക്കുന്നത് പൂർത്തിയാക്കുകയാണെങ്കിൽ, അടുത്ത സ്ലൈഡിലേക്ക് പോകാൻ നിങ്ങൾക്ക് <em>Continue</em> ബട്ടൺ അമർത്താം.</br>",
+                   "(v) പരീക്ഷണത്തിന്റെ അവസാനം സർവേ പൂരിപ്പിക്കുക.</br>",
+                   "</br>നന്ദി!</br>(അടുത്ത സ്ലൈഡിലേക്ക് പോകാൻ <em>Spacebar</em> അമർത്തുക)");
+            break;
+          
+          case "Tamil":
+            return "<h2>வழிமுறைகள்</h2><h4>பின்வரும் வழிமுறைகளைப் பின்பற்றவும்:</h4></br>".concat(
+                   "(i) முடிந்தால் வெளிப்புற மைக்ரோஃபோனைப் பயன்படுத்தவும்.</br>",
+                   "(ii) ஒவ்வொரு ஸ்லைடிலும் வரிசையாக சில எழுத்துக்கள் வழங்கப்படும்.</br>",
+                   "(iii) உங்கள் முதல் மொழி/தாய் மொழியில் 5 வினாடிகளுக்குள் உச்சரிக்கவும்.</br>",
+                   "(iv) நீங்கள் 5 வினாடிகளுக்குள் வரிசைகளை உச்சரித்து முடித்தால், அடுத்த ஸ்லைடிற்குச் செல்ல <em>Continue</em> பொத்தானை அழுத்தவும்.</br>",
+                   "(v) பரிசோதனையின் முடிவில் கருத்துக்கணிப்பை நிரப்பவும்.</br>",
+                   "</br>நன்றி!</br>(அடுத்த ஸ்லைடிற்குச் செல்ல <em>Spacebar</em> அழுத்தவும்)");
+            break;
+            
+          case "Marathi":
+            return "<h2>सूचना</h2><h4>कृपया खालील सूचनांचे अनुसरण करा:</h4></br>".concat(
+                   "(i) शक्य असल्यास, कृपया बाह्य (एकस्टर्नल) मायक्रोफोन वापरा।</br>",
+                   "(ii) प्रत्येक स्लाइडमध्ये, तुम्हाला अक्षरांची मालिका सादर केली जाईल।</br>",
+                   "(iii) कृपया अक्षरांच्या या प्रत्येक क्रमाचा उच्चार 5 सेकंदात करा, जसे तुम्ही तुमच्या पहिल्या भाषेत/मातृभाषेत कराल।</br>",
+                   "(iv) जर तुम्ही 5 सेकंदांपेक्षा कमी वेळात क्रमांचे उच्चार पूर्ण केले, तर तुम्ही पुढील स्लाइडवर जाण्यासाठी <em>Continue</em> बटण दाबू शकता।</br>",
+                   "(v) कृपया प्रयोगाच्या शेवटी सर्वेक्षण भरा।</br>",
+                   "</br>धन्यवाद!</br>(पुढील स्लाइडवर जाण्यासाठी <em>Spacebar</em> दाबा)");
+            break;
+            
+          case "Kannada":
+            return "<h2>ಸೂಚನೆಗಳು</h2><h4>ದಯವಿಟ್ಟು ಈ ಕೆಳಗಿನ ಸೂಚನೆಗಳನ್ನು ಅನುಸರಿಸಿ:</h4></br>".concat(
+                   "(i) ಸಾಧ್ಯವಾದರೆ ದಯವಿಟ್ಟು ಬಾಹ್ಯ ಮೈಕ್ರೊಫೋನ್ ಬಳಸಿ.</br>",
+                   "(ii) ಪ್ರತಿ ಸ್ಲೈಡ್‌ನಲ್ಲಿ, ನಿಮಗೆ ಅಕ್ಷರಗಳ ಸರಣಿಯನ್ನು ನೀಡಲಾಗುತ್ತದೆ.</br>",
+                   "(iii) ದಯವಿಟ್ಟು ಈ ಪ್ರತಿಯೊಂದು ಅನುಕ್ರಮವನ್ನು ನಿಮ್ಮ ಮೊದಲ ಭಾಷೆ/ಮಾತೃಭಾಷೆಯಲ್ಲಿ 5 ಸೆಕೆಂಡುಗಳ ಒಳಗೆ ಉಚ್ಚರಿಸಿ.</br>",
+                   "(iv) ನೀವು 5 ಸೆಕೆಂಡುಗಳಿಗಿಂತ ಕಡಿಮೆ ಅವಧಿಯಲ್ಲಿ ಅನುಕ್ರಮಗಳನ್ನು ಉಚ್ಚರಿಸುವುದನ್ನು ಪೂರ್ಣಗೊಳಿಸಿದರೆ, ಮುಂದಿನ ಸ್ಲೈಡ್‌ಗೆ ಹೋಗಲು ನೀವು <em>Continue</em> ಬಟನ್ ಅನ್ನು ಒತ್ತಬಹುದು.</br>",
+                   "(v) ದಯವಿಟ್ಟು ಪ್ರಯೋಗದ ಕೊನೆಯಲ್ಲಿ ಸಮೀಕ್ಷೆಯನ್ನು ಭರ್ತಿ ಮಾಡಿ.</br>",
+                   "</br>ಧನ್ಯವಾದಗಳು!</br>(ಮುಂದಿನ ಸ್ಲೈಡ್‌ಗೆ ಹೋಗಲು <em>Spacebar</em> ಅನ್ನು ಒತ್ತಿರಿ)");
+            break;
+            
+          case "Bengali":
+            return "<h2>নির্দেশাবলী</h2><h4>অনুগ্রহ করে নিম্নলিখিত নির্দেশাবলী অনুসরণ করুন:</h4></br>".concat(
+                   "(i) যদি সম্ভব হয়, অনুগ্রহ করে একটি এক্সটার্নল মাইক্রোফোন ব্যবহার করুন৷</br>",
+                   "(ii) প্রতিটি স্লাইডে আপনাকে একটাকরে অক্ষরের শৃঙ্খলা দেখানো হবে৷</br>",
+                   "(iii) অনুগ্রহ করে 5 সেকেন্ডের মধ্যে আপনার প্রথম ভাষা/মাতৃভাষায় এই অক্ষর-শৃঙ্খলাগুলো উচ্চারণ করুন৷</br>",
+                   "(iv) আপনার যদি 5 সেকেন্ডের কম সময়ে কোনও একটা অক্ষর-শৃঙ্খলা উচ্চারণ করা শেষ হয়ে যায়, আপনি পরবর্তী স্লাইডে যেতে <em>Continue</em> বোতাম ব্যাবহার করতে পারেন৷</br>",
+                   "(v) একপেরিমেন্ট শেষে সমীক্ষাটি পূরণ করুন৷</br>",
+                   "</br>ধন্যবাদ!</br>(পরবর্তী স্লাইডে যেতে <em>Spacebar</em> টিপুন)");
+            break;
+            
+          case "Hindi":
+            return "<h2>निर्देश</h2><h4>कृपया निम्नलिखित निर्देशों का पालन करें:</h4></br>".concat(
+                   "(i) यदि संभव हो तो कृपया एकस्टर्नल माइक्रोफ़ोन का उपयोग करें।</br>",
+                   "(ii) प्रत्येक स्लाइड में आपको अक्षरों की एक श्रृंखला दिखाई जाएगी।</br>",
+                   "(iii) कृपया प्रत्येक शृंखला का 5 सेकंड के भीतर अपनी पहली भाषा/मातृभाषा में उच्चारण करें।</br>",
+                   "(iv) यदि आप 5 सेकंड से कम समय में ही किसी शृंखला का उच्चारण पूरा कर लेते हैं, तो आप अगली स्लाइड पर जाने के लिए <em>Continue</em> बटन दबा सकते हैं।</br>",
+                   "(v) कृपया एक्सपेरिमेंट के अंत में दिए गए सर्वेक्षण को पूरा करें।</br>",
+                   "</br>धन्यवाद!</br>(अगली स्लाइड पर जाने के लिए <em>Spacebar</em> दबाएं)");
+            break;
+        }
+      }
+    //=================================================================================================================
+    //Please follow the instructions below:
+    //(i) If possible please use an external microphone.
+    //(ii) In each slide, you will be presented with a series of letters.
+    //(iii) Please pronounce each of these sequences within 5 seconds in your first language/mother tongue.
+    //(iv) If you finish pronouncing the sequences in less than 5 seconds, you can press the <em>Continue</em>
+    //     button to go to the next slide.
+    //(v) Please fill out the survey at the end of the experiment.
+    //Thank you!
+    //(Press <em>Spacebar</em> to go to the next slide)
+    //=================================================================================================================
+    };
+    
+    var initialise_microphone = {
+    type: jsPsychInitializeMicrophone
+    };
+    
+    var trial = {
+    type: jsPsychHtmlAudioResponse,
+    stimulus: () => {
+      return `<p style="font-size:48px; color:red;">`.concat(dictionary[language_selected][iterations],
+        `</p>`)
+    },
+    recording_duration: 5000
+    };
+
+    var data_collection = {
+    timeline: [trial],
+    loop_function: function(data){
+        if(iterations + 1 != dictionary["Malayalam"].length){
+            iterations = iterations + 1;
+            return true;
+        } else {
+            return false;
+        }
+    }
+    };
+    
+    var personal_info = {
+          type: jsPsychSurveyText,
+          preamble: () => {
+              switch(language_selected) {
+                case "Malayalam":
+                  return `<h4>നിങ്ങളുടെ സ്വകാര്യ വിശദാംശങ്ങൾ പൂരിപ്പിക്കുക.</h4>`;
+                  break;
+                case "Tamil":
+                  return `<h4>உங்கள் தனிப்பட்ட விவரங்களை நிரப்பவும்.</h4>`;
+                  break;
+                case "Marathi":
+                  return `<h4>कृपया तुमचे वैयक्तिक विवरण द्यावा</h4>`;
+                  break;
+                case "Kannada":
+                  return `<h4>ದಯವಿಟ್ಟು ನಿಮ್ಮ ವೈಯಕ್ತಿಕ ವಿವರಗಳನ್ನು ಭರ್ತಿ ಮಾಡಿ.</h4>`;
+                  break;
+                case "Hindi":
+                  return `<h4>कृपया अपना व्यक्तिगत विवरण भरें</h4>`;
+                  break;
+                case "Bengali":
+                  return `<h4>আপনার ব্যক্তিগত তথ্য পূরণ করুন</h4>`;
+                  break;
+              }
+            },
+          questions: () => {
+              switch(language_selected){
+                
+                case "Malayalam":
+                  return [{prompt: "ജന്മസ്ഥലം </br>(നിങ്ങൾ വളർന്ന/ നിങ്ങളുടെ കുട്ടിക്കാലത്തിന്റെ ഭൂരിഭാഗവും ചെലവഴിച്ച പട്ടണം/നഗരം/ഗ്രാമത്തിന്റെ പേര് എഴുതുക)",
+                             placeholder: 'ഉദാ.: ഗുഡ്ഗാവ്, ഹരിയാന', required: true},
+                          {prompt: "വീട്ടിലെ പ്രാഥമിക ഭാഷ", required: true},
+                          {prompt: "പിതാവിന്റെ പ്രാഥമിക ഭാഷ", required: true},
+                          {prompt: "അമ്മയുടെ പ്രാഥമിക ഭാഷ", required: true},
+                          {prompt: "ഉയർന്ന വിദ്യാഭ്യാസ യോഗ്യത", placeholder: 'സെക്കൻഡറി/ഹൈ സെക്കൻഡറി/ബിരുദം/പോസ്റ്റ് ഗ്രാജ്വേഷൻ',
+                             required: true}];
+                  break;
+                  
+                case "Tamil":
+                  return [{prompt: "பிறந்த இடம் </br>(நீங்கள் வளர்ந்த/உங்கள் குழந்தைப் பருவத்தின் பெரும்பகுதியைக் கழித்த ஊர்/நகரம்/கிராமத்தின் பெயரை எழுதுங்கள்)", placeholder: 'எ.கா.: குர்கான், ஹரியானா ', required: true},
+                          {prompt: "வீட்டின் முதன்மை மொழி", required: true},
+                          {prompt: "தந்தையின் முதன்மை மொழி", required: true},
+                          {prompt: "தாயின் முதன்மை மொழி", required: true},
+                          {prompt: "உயர்ந்த கல்வித் தகுதி", placeholder: 'இரண்டாம் நிலை/உயர்நிலை/பட்டம்/முதுகலை',required: true}];
+                 break;
+                 
+                 case "Marathi":
+                   return [{prompt: "जन्मस्थान </br> (ज्या शहराचे/गावाचे नाव लिहा जिथे तुम्ही मोठे झाले/तुमचे बालपण जास्त घालवले)", 
+                              placeholder: 'उदा.: गुडगाव, हरियाणा ', required: true},
+                           {prompt: "घरची प्राथमिक भाषा", required: true},
+                           {prompt: "वडिलांची प्राथमिक भाषा", required: true},
+                           {prompt: "आईची प्राथमिक भाषा", required: true},
+                           {prompt: "सर्वोच्च शैक्षणिक पात्रता", placeholder: 'माध्यमिक/उच्च माध्यमिक/पदवी/पदव्युत्तर पदवी', required: true}];
+                 break;
+                 
+                 case "Kannada":
+                   return [{prompt: "ಹುಟ್ಟಿದ ಸ್ಥಳ </br> (ನೀವು ಬೆಳೆದ/ ನಿಮ್ಮ ಬಾಲ್ಯದ ಬಹುಪಾಲು ಕಳೆದ ಊರು/ನಗರ/ಹಳ್ಳಿಯ ಹೆಸರನ್ನು ಬರೆಯಿರಿ)",
+                              placeholder: 'ಉದಾ.: ಗುರ್ಗಾಂವ್, ಹರಿಯಾಣ ', required: true},
+                           {prompt: "ಮನೆಯ ಪ್ರಾಥಮಿಕ ಭಾಷೆ", required: true},
+                           {prompt: "ತಂದೆಯ ಪ್ರಾಥಮಿಕ ಭಾಷೆ", required: true},
+                           {prompt: "ತಾಯಿಯ ಪ್ರಾಥಮಿಕ ಭಾಷೆ", required: true},
+                           {prompt: "ಉನ್ನತ ಶೈಕ್ಷಣಿಕ ಅರ್ಹತೆ", placeholder: 'ಸೆಕೆಂಡರಿ/ಹೈ ಸೆಕೆಂಡರಿ/ಪದವಿ/ಪೋಸ್ಟ್ ಗ್ರಾಜುಯೇಷನ್', required: true}];
+                 break;
+                 
+                 case "Hindi":
+                   return [{prompt: "जन्मस्थान </br> (उस शहर/गांव का नाम लिखें जहां आप बड़े हुए/अपना अधिकांश बचपन बिताया)", 
+                              placeholder: 'उदाहरण: गुड़गांव, हरियाणा', required: true},
+                           {prompt: "घर की प्राथमिक भाषा", required: true},
+                           {prompt: "पिता की प्राथमिक भाषा", required: true},
+                           {prompt: "माँ की प्राथमिक भाषा", required: true},
+                           {prompt: "उच्चतम शैक्षिक योग्यता", placeholder: 'माध्यमिक/उच्च माध्यमिक/स्नातक/स्नातकोत्तर', required: true}];
+                break;
+                
+                case "Bengali":
+                  return [{prompt: "জন্মস্থান (সেই শহর/গ্রামের নাম লিখুন যেখানে আপনি বড় হয়েছেন/আপনার শৈশবের বেশিরভাগ সময় কাটিয়েছেন)",
+                             placeholder: 'যেমন: গুরগাঁও, হরিয়ানা ', required: true},
+                          {prompt: "বাড়ির প্রাথমিক ভাষা", required: true},
+                          {prompt: "বাবার প্রাথমিক ভাষা", required: true},
+                          {prompt: "মায়ের প্রাথমিক ভাষা", required: true},
+                          {prompt: "সর্বোচ্চ শিক্ষাগত যোগ্যতা", placeholder: 'মাধ্যমিক/উচ্চ মাধ্যমিক/স্নাতক/স্নাতকোত্তর', required: true}];
+               break;
+              }
+            }   
+      //============================================================================================================
+      //Please fill-in your personal details.
+      //============================================================================================================
+      //"Birthplace (Write the name of the town/city/village where you grew up/ spent most of your childhood)",
+      //             placeholder: 'Eg.: Gurgaon, Haryana '
+      //"Home's Primary Language"
+      //"Father's Primary Language"
+      //"Mother's Primary Language"
+      //"Highest Educational Qualification", placeholder: 'Secondary/High Secondary/Graduation/Post Graduation'
+      //============================================================================================================
+      };
+    
+    var outro = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: 'Thank you!</br>Please wait...',
+      trial_duration: 2000
+    };
+
+    timeline = [intro, select_language, instructions, initialise_microphone, data_collection, personal_info, outro];
+
+    jatos.onLoad(() => {
+        jatos.addAbortButton();
+        jsPsych.run(timeline);
+    });
+    
+  </script>
+  </html>
