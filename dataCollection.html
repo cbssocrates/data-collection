@@ -4,7 +4,7 @@
 <html>
   <head>
     <title>Data Collection, SLLJU</title>
-    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
     <script src="jatos.js"></script>
     <script src="https://unpkg.com/jspsych@7.3.1"></script>
     <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@1.1.2"></script>
@@ -12,6 +12,7 @@
     <script src="https://unpkg.com/@jspsych/plugin-html-audio-response@1.0.2"></script>
     <script src="https://unpkg.com/@jspsych/plugin-survey-multi-choice@1.1.2"></script>
     <script src="https://unpkg.com/@jspsych/plugin-survey-text@1.1.2"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-html-button-response@1.1.2"></script>
     <link href="https://unpkg.com/jspsych@7.3.1/css/jspsych.css" rel="stylesheet" type="text/css" />
   </head>
   <body></body>
@@ -95,10 +96,10 @@
     
     
     var intro = {
-      type: jsPsychHtmlKeyboardResponse,
-      stimulus: `<p style="font-size:48px; color:red;">Data Collection, SLL, JU</p>Use a DESKTOP/LAPTOP<br/>(Press the <em>spacebar</em> to continue)`
+      type: jsPsychHtmlButtonResponse,
+		      stimulus: `<h2 style="color:red;">Data Collection, SLL, JU</h2><p>(Press the <em>Continue</em> button)</p></br>`,
+      choices: ['Continue']
     };
-
     
     var select_language = {
       type: jsPsychSurveyMultiChoice,
@@ -113,7 +114,7 @@
     
     
     var instructions = {
-      type: jsPsychHtmlKeyboardResponse,
+      type: jsPsychHtmlButtonResponse,
       stimulus: () => {
       
       
@@ -131,7 +132,7 @@
                    "(iii) നിങ്ങളുടെ ആദ്യ ഭാഷയിൽ/മാതൃഭാഷയിൽ പറയുന്നതുപോലെ ഈ ഓരോ സീക്വൻസുകളും 5 സെക്കൻഡിനുള്ളിൽ ഉച്ചരിക്കുക.</br>",
                    "(iv) നിങ്ങൾ 5 സെക്കൻഡിനുള്ളിൽ സീക്വൻസുകൾ ഉച്ചരിക്കുന്നത് പൂർത്തിയാക്കുകയാണെങ്കിൽ, അടുത്ത സ്ലൈഡിലേക്ക് പോകാൻ നിങ്ങൾക്ക് <em>Continue</em> ബട്ടൺ അമർത്താം.</br>",
                    "(v) പരീക്ഷണത്തിന്റെ അവസാനം സർവേ പൂരിപ്പിക്കുക.</br>",
-                   "</br>നന്ദി!</br>(അടുത്ത സ്ലൈഡിലേക്ക് പോകാൻ <em>Spacebar</em> അമർത്തുക)");
+                   "</br>നന്ദി!</br><p>(അടുത്ത സ്ലൈഡിലേക്ക് പോകാൻ <em>Continue</em> അമർത്തുക)</p>");
             break;
           
           case "Tamil":
@@ -141,7 +142,7 @@
                    "(iii) உங்கள் முதல் மொழி/தாய் மொழியில் 5 வினாடிகளுக்குள் உச்சரிக்கவும்.</br>",
                    "(iv) நீங்கள் 5 வினாடிகளுக்குள் வரிசைகளை உச்சரித்து முடித்தால், அடுத்த ஸ்லைடிற்குச் செல்ல <em>Continue</em> பொத்தானை அழுத்தவும்.</br>",
                    "(v) பரிசோதனையின் முடிவில் கருத்துக்கணிப்பை நிரப்பவும்.</br>",
-                   "</br>நன்றி!</br>(அடுத்த ஸ்லைடிற்குச் செல்ல <em>Spacebar</em> அழுத்தவும்)");
+                   "</br>நன்றி!</br><p>(அடுத்த ஸ்லைடிற்குச் செல்ல <em>Continue</em> அழுத்தவும்)</p>");
             break;
             
           case "Marathi":
@@ -151,7 +152,7 @@
                    "(iii) कृपया अक्षरांच्या या प्रत्येक क्रमाचा उच्चार 5 सेकंदात करा, जसे तुम्ही तुमच्या पहिल्या भाषेत/मातृभाषेत कराल।</br>",
                    "(iv) जर तुम्ही 5 सेकंदांपेक्षा कमी वेळात क्रमांचे उच्चार पूर्ण केले, तर तुम्ही पुढील स्लाइडवर जाण्यासाठी <em>Continue</em> बटण दाबू शकता।</br>",
                    "(v) कृपया प्रयोगाच्या शेवटी सर्वेक्षण भरा।</br>",
-                   "</br>धन्यवाद!</br>(पुढील स्लाइडवर जाण्यासाठी <em>Spacebar</em> दाबा)");
+                   "</br>धन्यवाद!</br><p>(पुढील स्लाइडवर जाण्यासाठी <em>Continue</em> दाबा)</p>");
             break;
             
           case "Kannada":
@@ -161,7 +162,7 @@
                    "(iii) ದಯವಿಟ್ಟು ಈ ಪ್ರತಿಯೊಂದು ಅನುಕ್ರಮವನ್ನು ನಿಮ್ಮ ಮೊದಲ ಭಾಷೆ/ಮಾತೃಭಾಷೆಯಲ್ಲಿ 5 ಸೆಕೆಂಡುಗಳ ಒಳಗೆ ಉಚ್ಚರಿಸಿ.</br>",
                    "(iv) ನೀವು 5 ಸೆಕೆಂಡುಗಳಿಗಿಂತ ಕಡಿಮೆ ಅವಧಿಯಲ್ಲಿ ಅನುಕ್ರಮಗಳನ್ನು ಉಚ್ಚರಿಸುವುದನ್ನು ಪೂರ್ಣಗೊಳಿಸಿದರೆ, ಮುಂದಿನ ಸ್ಲೈಡ್‌ಗೆ ಹೋಗಲು ನೀವು <em>Continue</em> ಬಟನ್ ಅನ್ನು ಒತ್ತಬಹುದು.</br>",
                    "(v) ದಯವಿಟ್ಟು ಪ್ರಯೋಗದ ಕೊನೆಯಲ್ಲಿ ಸಮೀಕ್ಷೆಯನ್ನು ಭರ್ತಿ ಮಾಡಿ.</br>",
-                   "</br>ಧನ್ಯವಾದಗಳು!</br>(ಮುಂದಿನ ಸ್ಲೈಡ್‌ಗೆ ಹೋಗಲು <em>Spacebar</em> ಅನ್ನು ಒತ್ತಿರಿ)");
+                   "</br>ಧನ್ಯವಾದಗಳು!</br><p>(ಮುಂದಿನ ಸ್ಲೈಡ್‌ಗೆ ಹೋಗಲು <em>Continue</em> ಅನ್ನು ಒತ್ತಿರಿ)</p>");
             break;
             
           case "Bengali":
@@ -171,7 +172,7 @@
                    "(iii) অনুগ্রহ করে 5 সেকেন্ডের মধ্যে আপনার প্রথম ভাষা/মাতৃভাষায় এই অক্ষর-শৃঙ্খলাগুলো উচ্চারণ করুন৷</br>",
                    "(iv) আপনার যদি 5 সেকেন্ডের কম সময়ে কোনও একটা অক্ষর-শৃঙ্খলা উচ্চারণ করা শেষ হয়ে যায়, আপনি পরবর্তী স্লাইডে যেতে <em>Continue</em> বোতাম ব্যাবহার করতে পারেন৷</br>",
                    "(v) একপেরিমেন্ট শেষে সমীক্ষাটি পূরণ করুন৷</br>",
-                   "</br>ধন্যবাদ!</br>(পরবর্তী স্লাইডে যেতে <em>Spacebar</em> টিপুন)");
+                   "</br>ধন্যবাদ!</br><p>(পরবর্তী স্লাইডে যেতে <em>Continue</em> টিপুন)</p>");
             break;
             
           case "Hindi":
@@ -181,10 +182,10 @@
                    "(iii) कृपया प्रत्येक शृंखला का 5 सेकंड के भीतर अपनी पहली भाषा/मातृभाषा में उच्चारण करें।</br>",
                    "(iv) यदि आप 5 सेकंड से कम समय में ही किसी शृंखला का उच्चारण पूरा कर लेते हैं, तो आप अगली स्लाइड पर जाने के लिए <em>Continue</em> बटन दबा सकते हैं।</br>",
                    "(v) कृपया एक्सपेरिमेंट के अंत में दिए गए सर्वेक्षण को पूरा करें।</br>",
-                   "</br>धन्यवाद!</br>(अगली स्लाइड पर जाने के लिए <em>Spacebar</em> दबाएं)");
+                   "</br>धन्यवाद!</br><p>(अगली स्लाइड पर जाने के लिए <em>Continue</em> दबाएं)</p>");
             break;
         }
-      }
+      },
     //=================================================================================================================
     //Please follow the instructions below:
     //(i) If possible please use an external microphone.
@@ -194,8 +195,9 @@
     //     button to go to the next slide.
     //(v) Please fill out the survey at the end of the experiment.
     //Thank you!
-    //(Press <em>Spacebar</em> to go to the next slide)
+    //(Press <em>Continue</em> to go to the next slide)
     //=================================================================================================================
+      choices: ['Continue']
     };
     
     var initialise_microphone = {
