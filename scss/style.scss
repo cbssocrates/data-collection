@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap');
+
+.heading {
+    text-align: center;
+    font-size: 60px;
+}
+
+h2 {
+    color: #00d084;
+}
+
+.container{
+    display: flex;
+    align-items: start;
+    gap: 2rem;
+}
+
+.about {
+    background-color: #7bdcb5;
+    padding: 2%;
+    top: 15px;
+    position: sticky;
+    width: 20%;
+}
+
+.content::selection {
+    background: #7bdcb5;
+}
+.heading::selection {
+    background: #7bdcb5;
+}
+
+.content {
+    width: 70%;
+}
+
+body {
+    font-family: 'Old Standard TT Bold', serif;
+    font-size: 21px;
+    margin: auto;
+    padding: 10px;
+    width: 80%;
+}
+
+footer {
+    text-align: center;
+    margin-top: 15px;
+}
