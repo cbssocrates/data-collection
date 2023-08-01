@@ -6,6 +6,7 @@
 
 .name {
   display: inline;
+  margin-top: -2px;
 }
 
 h2 {
