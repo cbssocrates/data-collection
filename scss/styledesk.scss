@@ -7,6 +7,7 @@
 
 .name {
     display: inline;
+    margin-top: -2px;
 }
 
 h2 {
@@ -14,15 +15,18 @@ h2 {
 }
 
 .container{
-    display: block;
+    display: flex;
     align-items: start;
     gap: 2rem;
 }
 
 .left-column {
-    width: 100%;
+    display: block;
+    flex-direction: column;
+    width: 25%;
     top: 15px;
     margin-top: 15px;
+    position: sticky;
 }
 
 .about {
@@ -57,7 +61,7 @@ h2 {
         background: #c3edde;
 }
 .content {
-    width: 100%;
+    width: 65%;
 }
 
 body {
