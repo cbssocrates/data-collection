@@ -1,0 +1,76 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0 
+xmax = 4.029333333333334 
+tiers? <exists> 
+size = 2 
+item []: 
+    item [1]:
+        class = "IntervalTier" 
+        name = "silences" 
+        xmin = 0 
+        xmax = 4.029333333333334 
+        intervals: size = 9 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.8026666666666664 
+            text = "" 
+        intervals [2]:
+            xmin = 0.8026666666666664 
+            xmax = 0.9275741447458566 
+            text = "a" 
+        intervals [3]:
+            xmin = 0.9275741447458566 
+            xmax = 1.2980259053761734 
+            text = "pp" 
+        intervals [4]:
+            xmin = 1.2980259053761734 
+            xmax = 1.5066666666666664 
+            text = "a" 
+        intervals [5]:
+            xmin = 1.5066666666666664 
+            xmax = 2.761431321006032 
+            text = "" 
+        intervals [6]:
+            xmin = 2.761431321006032 
+            xmax = 2.8774391792409957 
+            text = "i" 
+        intervals [7]:
+            xmin = 2.8774391792409957 
+            xmax = 3.2937046347216663 
+            text = "TT" 
+        intervals [8]:
+            xmin = 3.2937046347216663 
+            xmax = 3.5546666666666664 
+            text = "i" 
+        intervals [9]:
+            xmin = 3.5546666666666664 
+            xmax = 4.029333333333334 
+            text = "" 
+    item [2]:
+        class = "IntervalTier" 
+        name = "" 
+        xmin = 0 
+        xmax = 4.029333333333334 
+        intervals: size = 5 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.8026666666666664 
+            text = "" 
+        intervals [2]:
+            xmin = 0.8026666666666664 
+            xmax = 1.5066666666666664 
+            text = "appa" 
+        intervals [3]:
+            xmin = 1.5066666666666664 
+            xmax = 2.761431321006032 
+            text = "" 
+        intervals [4]:
+            xmin = 2.761431321006032 
+            xmax = 3.5546666666666664 
+            text = "iTTi" 
+        intervals [5]:
+            xmin = 3.5546666666666664 
+            xmax = 4.029333333333334 
+            text = "" 

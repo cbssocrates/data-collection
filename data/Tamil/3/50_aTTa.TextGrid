@@ -1,0 +1,76 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0 
+xmax = 1.62 
+tiers? <exists> 
+size = 2 
+item []: 
+    item [1]:
+        class = "IntervalTier" 
+        name = "silences" 
+        xmin = 0 
+        xmax = 1.62 
+        intervals: size = 9 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.03762692749414551 
+            text = "" 
+        intervals [2]:
+            xmin = 0.03762692749414551 
+            xmax = 0.10199135020296671 
+            text = "e" 
+        intervals [3]:
+            xmin = 0.10199135020296671 
+            xmax = 0.27765258717912455 
+            text = "TT" 
+        intervals [4]:
+            xmin = 0.27765258717912455 
+            xmax = 0.41576791090847004 
+            text = "e" 
+        intervals [5]:
+            xmin = 0.41576791090847004 
+            xmax = 1.0979999999999999 
+            text = "" 
+        intervals [6]:
+            xmin = 1.0979999999999999 
+            xmax = 1.2404370768652417 
+            text = "a" 
+        intervals [7]:
+            xmin = 1.2404370768652417 
+            xmax = 1.3798933260676878 
+            text = "T" 
+        intervals [8]:
+            xmin = 1.3798933260676878 
+            xmax = 1.5300769790549371 
+            text = "a" 
+        intervals [9]:
+            xmin = 1.5300769790549371 
+            xmax = 1.62 
+            text = "" 
+    item [2]:
+        class = "IntervalTier" 
+        name = "" 
+        xmin = 0 
+        xmax = 1.62 
+        intervals: size = 5 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.03762692749414551 
+            text = "" 
+        intervals [2]:
+            xmin = 0.03762692749414551 
+            xmax = 0.41576791090847004 
+            text = "eTTe" 
+        intervals [3]:
+            xmin = 0.41576791090847004 
+            xmax = 1.0979999999999999 
+            text = "" 
+        intervals [4]:
+            xmin = 1.0979999999999999 
+            xmax = 1.5300769790549371 
+            text = "aTa" 
+        intervals [5]:
+            xmin = 1.5300769790549371 
+            xmax = 1.62 
+            text = "" 
