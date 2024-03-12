@@ -1,0 +1,76 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0 
+xmax = 5 
+tiers? <exists> 
+size = 2 
+item []: 
+    item [1]:
+        class = "IntervalTier" 
+        name = "phoneme" 
+        xmin = 0 
+        xmax = 5 
+        intervals: size = 9 
+        intervals [1]:
+            xmin = 0 
+            xmax = 1.7032667117249223 
+            text = "" 
+        intervals [2]:
+            xmin = 1.7032667117249223 
+            xmax = 1.800464464777283 
+            text = "o" 
+        intervals [3]:
+            xmin = 1.800464464777283 
+            xmax = 2.036020243858259 
+            text = "TT" 
+        intervals [4]:
+            xmin = 2.036020243858259 
+            xmax = 2.106439024130888 
+            text = "o" 
+        intervals [5]:
+            xmin = 2.106439024130888 
+            xmax = 4.1041143845035295 
+            text = "" 
+        intervals [6]:
+            xmin = 4.1041143845035295 
+            xmax = 4.202994800979598 
+            text = "o" 
+        intervals [7]:
+            xmin = 4.202994800979598 
+            xmax = 4.37936323613643 
+            text = "TT" 
+        intervals [8]:
+            xmin = 4.37936323613643 
+            xmax = 4.456851254817195 
+            text = "o" 
+        intervals [9]:
+            xmin = 4.456851254817195 
+            xmax = 5 
+            text = "" 
+    item [2]:
+        class = "IntervalTier" 
+        name = "word" 
+        xmin = 0 
+        xmax = 5 
+        intervals: size = 5 
+        intervals [1]:
+            xmin = 0 
+            xmax = 1.7032667117249223 
+            text = "" 
+        intervals [2]:
+            xmin = 1.7032667117249223 
+            xmax = 2.106439024130888 
+            text = "oTTo" 
+        intervals [3]:
+            xmin = 2.106439024130888 
+            xmax = 4.1041143845035295 
+            text = "" 
+        intervals [4]:
+            xmin = 4.1041143845035295 
+            xmax = 4.456851254817195 
+            text = "oTTo" 
+        intervals [5]:
+            xmin = 4.456851254817195 
+            xmax = 5 
+            text = "" 

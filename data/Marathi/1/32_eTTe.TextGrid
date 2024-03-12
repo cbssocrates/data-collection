@@ -1,0 +1,76 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0 
+xmax = 5 
+tiers? <exists> 
+size = 2 
+item []: 
+    item [1]:
+        class = "IntervalTier" 
+        name = "phoneme" 
+        xmin = 0 
+        xmax = 5 
+        intervals: size = 9 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.835383676235573 
+            text = "" 
+        intervals [2]:
+            xmin = 0.835383676235573 
+            xmax = 0.917245935808455 
+            text = "e" 
+        intervals [3]:
+            xmin = 0.917245935808455 
+            xmax = 1.2507142578921069 
+            text = "TT" 
+        intervals [4]:
+            xmin = 1.2507142578921069 
+            xmax = 1.3042858836420075 
+            text = "e" 
+        intervals [5]:
+            xmin = 1.3042858836420075 
+            xmax = 2.880874687817817 
+            text = "" 
+        intervals [6]:
+            xmin = 2.880874687817817 
+            xmax = 2.9479418214334676 
+            text = "e" 
+        intervals [7]:
+            xmin = 2.9479418214334676 
+            xmax = 3.319341891550326 
+            text = "TT" 
+        intervals [8]:
+            xmin = 3.319341891550326 
+            xmax = 3.3743875578197753 
+            text = "e" 
+        intervals [9]:
+            xmin = 3.3743875578197753 
+            xmax = 5 
+            text = "" 
+    item [2]:
+        class = "IntervalTier" 
+        name = "word" 
+        xmin = 0 
+        xmax = 5 
+        intervals: size = 5 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.835383676235573 
+            text = "" 
+        intervals [2]:
+            xmin = 0.835383676235573 
+            xmax = 1.3042858836420075 
+            text = "eTTe" 
+        intervals [3]:
+            xmin = 1.3042858836420075 
+            xmax = 2.880874687817817 
+            text = "" 
+        intervals [4]:
+            xmin = 2.880874687817817 
+            xmax = 3.3743875578197753 
+            text = "eTTe" 
+        intervals [5]:
+            xmin = 3.3743875578197753 
+            xmax = 5 
+            text = "" 

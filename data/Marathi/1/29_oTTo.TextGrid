@@ -1,0 +1,76 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0 
+xmax = 5 
+tiers? <exists> 
+size = 2 
+item []: 
+    item [1]:
+        class = "IntervalTier" 
+        name = "phoneme" 
+        xmin = 0 
+        xmax = 5 
+        intervals: size = 9 
+        intervals [1]:
+            xmin = 0 
+            xmax = 1.169434311859113 
+            text = "" 
+        intervals [2]:
+            xmin = 1.169434311859113 
+            xmax = 1.2457287339242806 
+            text = "o" 
+        intervals [3]:
+            xmin = 1.2457287339242806 
+            xmax = 1.61043919091762 
+            text = "TT" 
+        intervals [4]:
+            xmin = 1.61043919091762 
+            xmax = 1.685577636890891 
+            text = "o" 
+        intervals [5]:
+            xmin = 1.685577636890891 
+            xmax = 3.5061358034415946 
+            text = "" 
+        intervals [6]:
+            xmin = 3.5061358034415946 
+            xmax = 3.593411998379778 
+            text = "o" 
+        intervals [7]:
+            xmin = 3.593411998379778 
+            xmax = 3.9466998912995903 
+            text = "TT" 
+        intervals [8]:
+            xmin = 3.9466998912995903 
+            xmax = 4.0310861460080325 
+            text = "o" 
+        intervals [9]:
+            xmin = 4.0310861460080325 
+            xmax = 5 
+            text = "" 
+    item [2]:
+        class = "IntervalTier" 
+        name = "word" 
+        xmin = 0 
+        xmax = 5 
+        intervals: size = 5 
+        intervals [1]:
+            xmin = 0 
+            xmax = 1.169434311859113 
+            text = "" 
+        intervals [2]:
+            xmin = 1.169434311859113 
+            xmax = 1.685577636890891 
+            text = "oTTo" 
+        intervals [3]:
+            xmin = 1.685577636890891 
+            xmax = 3.5061358034415946 
+            text = "" 
+        intervals [4]:
+            xmin = 3.5061358034415946 
+            xmax = 4.0310861460080325 
+            text = "oTTo" 
+        intervals [5]:
+            xmin = 4.0310861460080325 
+            xmax = 5 
+            text = "" 

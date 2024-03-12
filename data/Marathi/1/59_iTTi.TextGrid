@@ -1,0 +1,76 @@
+File type = "ooTextFile"
+Object class = "TextGrid"
+
+xmin = 0 
+xmax = 5 
+tiers? <exists> 
+size = 2 
+item []: 
+    item [1]:
+        class = "IntervalTier" 
+        name = "phoneme" 
+        xmin = 0 
+        xmax = 5 
+        intervals: size = 9 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.8027554370894511 
+            text = "" 
+        intervals [2]:
+            xmin = 0.8027554370894511 
+            xmax = 0.8514911155199979 
+            text = "i" 
+        intervals [3]:
+            xmin = 0.8514911155199979 
+            xmax = 1.2192830354091913 
+            text = "TT" 
+        intervals [4]:
+            xmin = 1.2192830354091913 
+            xmax = 1.3291007641393568 
+            text = "i" 
+        intervals [5]:
+            xmin = 1.3291007641393568 
+            xmax = 2.9262778787408124 
+            text = "" 
+        intervals [6]:
+            xmin = 2.9262778787408124 
+            xmax = 2.9694046790923347 
+            text = "i" 
+        intervals [7]:
+            xmin = 2.9694046790923347 
+            xmax = 3.341622140587783 
+            text = "TT" 
+        intervals [8]:
+            xmin = 3.341622140587783 
+            xmax = 3.4013361718437367 
+            text = "i" 
+        intervals [9]:
+            xmin = 3.4013361718437367 
+            xmax = 5 
+            text = "" 
+    item [2]:
+        class = "IntervalTier" 
+        name = "word" 
+        xmin = 0 
+        xmax = 5 
+        intervals: size = 5 
+        intervals [1]:
+            xmin = 0 
+            xmax = 0.8027554370894511 
+            text = "" 
+        intervals [2]:
+            xmin = 0.8027554370894511 
+            xmax = 1.3291007641393568 
+            text = "iTTi" 
+        intervals [3]:
+            xmin = 1.3291007641393568 
+            xmax = 2.9262778787408124 
+            text = "" 
+        intervals [4]:
+            xmin = 2.9262778787408124 
+            xmax = 3.4013361718437367 
+            text = "iTTi" 
+        intervals [5]:
+            xmin = 3.4013361718437367 
+            xmax = 5 
+            text = "" 
